@@ -2,7 +2,7 @@
 
 import { SalesDataResponse } from "@/types";
 
-const HOST = "https://sales-report-server.vercel.app";
+const HOST = "https://jagota-sales-report-server.vercel.app";
 
 export async function fetchSalesData(
   fromYear: number,
