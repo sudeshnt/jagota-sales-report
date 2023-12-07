@@ -24,6 +24,8 @@ export type TransformedSaleDocument = SaleDocument & {
   profit: number;
   margin: number;
   achievedBudget: number;
+  growthPercentage?: number;
+  gapPercentage?: number;
 };
 
 export type TransformedSaleDocumentResponse = Record<
