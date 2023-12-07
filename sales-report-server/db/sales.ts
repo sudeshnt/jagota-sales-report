@@ -1,18 +1,14 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
+import { SaleDocument, SalesFilter } from "../types";
 
-type SalesFilter = {
-  fromYear: number;
-  toYear: number;
-};
-
-const distributionSchema = new mongoose.Schema({
+const distributionSchema = new Schema({
   marketing: Number,
   salesTeam: Number,
   operations: Number,
   otherExpenses: Number,
 });
 
-const SaleSchema = new mongoose.Schema({
+const SaleSchema = new Schema<SaleDocument>({
   year: Number,
   month: String,
   budget: Number,
@@ -22,7 +18,7 @@ const SaleSchema = new mongoose.Schema({
   distribution: distributionSchema,
 });
 
-export const SaleModel = mongoose.model("Sale", SaleSchema);
+export const SaleModel = mongoose.model<SaleDocument>("Sale", SaleSchema);
 
 // Actions
 export const fetchAllSales = () => {
