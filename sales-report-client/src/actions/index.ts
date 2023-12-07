@@ -2,14 +2,14 @@
 
 import { SalesDataResponse } from "@/types";
 
-const HOST = "http://localhost:8080";
+const HOST = "https://sales-report-server.vercel.app";
 
 export async function fetchSalesData(
   fromYear: number,
   toYear: number
 ): Promise<SalesDataResponse> {
   try {
-    const res = await fetch(`${process.env.HOST}/sales`, {
+    const res = await fetch(`${HOST}/sales`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
