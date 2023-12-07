@@ -1,7 +1,7 @@
 import { Chip } from "@mui/material";
 import { useMemo } from "react";
 
-type PercentageChipProps = {
+export type PercentageChipProps = {
   value?: number;
   signed?: boolean;
   isReversed?: boolean;
