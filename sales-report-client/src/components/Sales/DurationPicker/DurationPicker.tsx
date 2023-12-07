@@ -1,5 +1,6 @@
 "use client";
 
+import useSalesStore from "@/store";
 import {
   Card,
   CardContent,
@@ -9,22 +10,22 @@ import {
   Select,
   Typography,
 } from "@mui/material";
-import { useMemo, useState } from "react";
-
-const START_YEAR = 2003;
-const END_YEAR = 2022;
+import { useEffect } from "react";
 
 export const DurationPicker = () => {
-  const years = useMemo(() => {
-    const yearArray = [];
-    for (let year = START_YEAR; year <= END_YEAR; year++) {
-      yearArray.push(year);
-    }
-    return yearArray;
-  }, []);
+  const {
+    isLoading,
+    years,
+    fromYear,
+    toYear,
+    setFromYear,
+    setToYear,
+    fetchSalesData,
+  } = useSalesStore((state) => state);
 
-  const [fromYear, setFromYear] = useState<number | null>(null);
-  const [toYear, setToYear] = useState<number | null>(null);
+  useEffect(() => {
+    if (!isLoading) fetchSalesData(fromYear, toYear);
+  }, [fromYear, toYear]);
 
   return (
     <div className="flex flex-row justify-end py-8">
@@ -38,7 +39,7 @@ export const DurationPicker = () => {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={fromYear}
+              value={fromYear ?? ""}
               label="From"
               className="w-[150px]"
               onChange={(e) => setFromYear(e.target.value as number)}
@@ -46,7 +47,9 @@ export const DurationPicker = () => {
               {years
                 .filter((year) => !toYear || year < toYear)
                 .map((year) => (
-                  <MenuItem value={year}>{year}</MenuItem>
+                  <MenuItem key={year} value={year}>
+                    {year}
+                  </MenuItem>
                 ))}
             </Select>
           </FormControl>
@@ -55,7 +58,7 @@ export const DurationPicker = () => {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={toYear}
+              value={toYear ?? ""}
               label="To"
               className="w-[150px]"
               onChange={(e) => setToYear(e.target.value as number)}
@@ -63,7 +66,9 @@ export const DurationPicker = () => {
               {years
                 .filter((year) => !fromYear || year > fromYear)
                 .map((year) => (
-                  <MenuItem value={year}>{year}</MenuItem>
+                  <MenuItem key={year} value={year}>
+                    {year}
+                  </MenuItem>
                 ))}
             </Select>
           </FormControl>

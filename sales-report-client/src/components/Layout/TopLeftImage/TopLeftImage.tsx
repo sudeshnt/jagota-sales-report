@@ -8,6 +8,7 @@ export default function TopLeftImg() {
         alt="left-top-image"
         width={600}
         height={600}
+        priority
       />
     </div>
   );

@@ -1,5 +1,7 @@
 import { MRT_Column } from "material-react-table";
 
+export type HeaderProps = { column: MRT_Column<Sale, unknown> };
+
 export type Sale = {
   _id: string;
   year: number;
@@ -22,4 +24,15 @@ export type Sale = {
   };
 };
 
-export type HeaderProps =  { column: MRT_Column<Sale, unknown> }
+export type SalesDataResponse = Record<string, Sale[]>;
+
+export type SalesState = {
+  fromYear: number;
+  toYear: number;
+  years: number[];
+  salesData: SalesDataResponse;
+  isLoading: boolean;
+  setFromYear: (fromYear: number) => void;
+  setToYear: (toYear: number) => void;
+  fetchSalesData: (fromYear: number, toYear: number) => Promise<void>;
+};

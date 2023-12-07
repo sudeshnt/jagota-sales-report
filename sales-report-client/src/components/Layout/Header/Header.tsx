@@ -9,7 +9,7 @@ function Header() {
           <Image
             src="/images/logo.png"
             width={320}
-            height={70}
+            height={77}
             alt=""
             priority
           />

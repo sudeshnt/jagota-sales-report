@@ -2,27 +2,14 @@ import { TableHeader } from "@/components/Layout/TableHeader/TableHeader";
 import { NumericCell } from "@/components/Sales/NumericCell/NumericCell";
 import { HeaderProps, Sale } from "@/types";
 import { Tooltip, Typography } from "@mui/material";
-import { MRT_ColumnDef, useMaterialReactTable } from "material-react-table";
+import { MRT_ColumnDef } from "material-react-table";
 import { useMemo } from "react";
-
-const TABLE_CONFIG = {
-  enableRowSelection: false,
-  enablePagination: false,
-  enableColumnOrdering: false,
-  enableGlobalFilter: false,
-  enableFullScreenToggle: false,
-  enableDensityToggle: false,
-  enableColumnFilters: false,
-  enableColumnActions: false,
-  enableTableFooter: false,
-  enableBottomToolbar: false,
-};
 
 const Header = ({ column }: HeaderProps) => (
   <TableHeader title={column.columnDef.header} />
 );
 
-export const useSalesTable = (salesResponse: Record<string, Sale[]>) => {
+export const useSalesTable = () => {
   const columns = useMemo<MRT_ColumnDef<Sale>[]>(
     () => [
       {
@@ -167,16 +154,7 @@ export const useSalesTable = (salesResponse: Record<string, Sale[]>) => {
     []
   );
 
-  const tables = Object.entries(salesResponse).map(([year, data]) => ({
-    year,
-    table: useMaterialReactTable({
-      columns,
-      data,
-      ...TABLE_CONFIG,
-    }),
-  }));
-
   return {
-    tables,
+    columns,
   };
 };
