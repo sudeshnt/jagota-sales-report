@@ -12,6 +12,7 @@ connectToDatabase();
 dotenv.config();
 
 const app: Application = express();
+
 app.use(
   cors({
     credentials: true,
@@ -19,10 +20,12 @@ app.use(
 );
 app.use(bodyParser.json());
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8080;
 
 app.use("/", router());
 
 app.listen(port, () => {
   console.log(`Server is Fire at http://localhost:${port}`);
 });
+
+export default app;

@@ -9,7 +9,7 @@ export async function fetchSalesData(
   toYear: number
 ): Promise<SalesDataResponse> {
   try {
-    const res = await fetch(`${HOST}/sales`, {
+    const res = await fetch(`${process.env.HOST}/sales`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
