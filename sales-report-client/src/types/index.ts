@@ -1,3 +1,5 @@
+import { MRT_Column } from "material-react-table";
+
 export type Sale = {
   _id: string;
   year: number;
@@ -19,3 +21,5 @@ export type Sale = {
     otherExpenses: number;
   };
 };
+
+export type HeaderProps =  { column: MRT_Column<Sale, unknown> }

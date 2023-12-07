@@ -1,12 +1,8 @@
 import { TableHeader } from "@/components/Layout/TableHeader/TableHeader";
 import { NumericCell } from "@/components/Sales/NumericCell/NumericCell";
-import { Sale } from "@/types";
+import { HeaderProps, Sale } from "@/types";
 import { Tooltip, Typography } from "@mui/material";
-import {
-  MRT_Column,
-  MRT_ColumnDef,
-  useMaterialReactTable,
-} from "material-react-table";
+import { MRT_ColumnDef, useMaterialReactTable } from "material-react-table";
 import { useMemo } from "react";
 
 const TABLE_CONFIG = {
@@ -22,7 +18,7 @@ const TABLE_CONFIG = {
   enableBottomToolbar: false,
 };
 
-const Header = ({ column }: { column: MRT_Column<Sale, unknown> }) => (
+const Header = ({ column }: HeaderProps) => (
   <TableHeader title={column.columnDef.header} />
 );
 
