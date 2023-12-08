@@ -132,7 +132,7 @@ npm install npm@latest -g
 1. Clone the repo. It contains both frontend and backend apps `sales-report-client` & `sales-report-server`
 
 ```sh
-git clone https://github.com/sudeshnt/next-news-app
+git clone https://github.com/sudeshnt/jagota-sales-report.git
 ```
 
 2. Install node modules inside both projects using the following command
