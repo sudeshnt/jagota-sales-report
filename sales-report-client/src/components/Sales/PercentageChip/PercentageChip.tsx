@@ -19,6 +19,8 @@ export const PercentageChip = (props: PercentageChipProps) => {
   const { value = 0, signed, isReversed, variant } = props;
 
   const color = useMemo(() => {
+    if (variant) return variant;
+
     if (signed) {
       if (value >= 0) {
         return isReversed ? "error" : "success";
@@ -34,5 +36,5 @@ export const PercentageChip = (props: PercentageChipProps) => {
     return `+${value}%`;
   }, [signed, value]);
 
-  return <Chip variant="outlined" color={variant ?? color} label={label} />;
+  return <Chip variant="outlined" color={color} label={label} />;
 };

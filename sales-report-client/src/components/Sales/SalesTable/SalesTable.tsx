@@ -25,6 +25,7 @@ type SalesTableProps = {
 
 export const SalesTable = (props: SalesTableProps) => {
   const { year, data } = props;
+
   const { columns } = useSalesTable();
 
   return (
