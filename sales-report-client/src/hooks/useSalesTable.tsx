@@ -145,7 +145,7 @@ export const useSalesTable = () => {
           return (
             <NumericCell
               value={row.budget}
-              percentageProps={{ value: row.achievedBudget }}
+              percentageProps={{ value: row.achievedBudget, scaled: true }}
             />
           );
         },

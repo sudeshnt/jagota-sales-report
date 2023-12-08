@@ -11,6 +11,7 @@ export async function fetchSalesData(
   try {
     const res = await fetch(`${HOST}/sales`, {
       method: "POST",
+      cache: "no-store",
       headers: {
         "Content-Type": "application/json",
       },

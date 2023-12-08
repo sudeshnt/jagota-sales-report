@@ -5,6 +5,7 @@ export type PercentageChipProps = {
   value?: number;
   signed?: boolean;
   isReversed?: boolean;
+  scaled?: boolean;
   variant?:
     | "default"
     | "error"
@@ -16,12 +17,18 @@ export type PercentageChipProps = {
 };
 
 export const PercentageChip = (props: PercentageChipProps) => {
-  const { value = 0, signed, isReversed, variant } = props;
+  const { value = 0, signed, scaled, isReversed, variant } = props;
 
   const color = useMemo(() => {
     if (variant) return variant;
-
-    if (signed) {
+    if (scaled) {
+      if (value >= 90) {
+        return "success";
+      } else if (value >= 80) {
+        return "warning";
+      }
+      return "error";
+    } else if (signed) {
       if (value >= 0) {
         return isReversed ? "error" : "success";
       }
