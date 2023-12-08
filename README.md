@@ -9,11 +9,11 @@
 <br />
 <div align="center">
   <a href="">
-    <img src="sales-report-client/public/images/logo.png" alt="Logo" height="150" style="margin-left: 60px;" >
+    <img src="sales-report-client/public/images/logo.png" alt="Logo" height="130" style="margin-left: 60px;" >
   </a>
   <h1 align="center">JAGOTA ASSIGNMENT</h1>
   <p align="center">
-    <a href="https://jagota-sales-report.vercel.app/" target=”_blank”><strong>View Demo »</strong></a>
+    <a href="https://jagota-sales-report.vercel.app/" target=”_blank”><strong>View Frontend Demo »</strong></a>
     <br />
   </p>
 </div>
@@ -47,9 +47,7 @@
 ### Screenshots
 
 <div align="center">
-  <a href="https://jagota-sales-report.vercel.app/" target=”_blank”>
-    <img src="sales-report-client/public/screenshots/1.png" alt="Logo" height="400">
-  </a>
+  <img src="sales-report-client/public/screenshots/1.png" alt="Logo" height="360">
 </div>
 <br />
 
@@ -131,13 +129,13 @@ npm install npm@latest -g
 
 ### Installation
 
-1. Clone the repo
+1. Clone the repo. It contains both frontend and backend apps `sales-report-client` & `sales-report-server`
 
 ```sh
 git clone https://github.com/sudeshnt/next-news-app
 ```
 
-2. Install node modules inside both sub folders `sales-report-client` `sales-report-server` using the following command
+2. Install node modules inside both projects using the following command
 
 ```sh
 npm install
