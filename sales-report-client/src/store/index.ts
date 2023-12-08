@@ -7,7 +7,7 @@ const START_YEAR = 2003;
 const END_YEAR = 2022;
 
 const useSalesStore = create<SalesState>((set, get) => ({
-  fromYear: START_YEAR,
+  fromYear: 2021,
   toYear: END_YEAR,
   years: getYearsList(START_YEAR, END_YEAR),
   salesData: {},

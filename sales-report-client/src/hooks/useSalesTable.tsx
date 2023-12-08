@@ -21,7 +21,7 @@ export const useSalesTable = () => {
       },
       {
         id: "value",
-        header: "Value",
+        header: "Revenue",
         accessorFn: (row) => row,
         Header,
         Cell: ({ cell }) => {

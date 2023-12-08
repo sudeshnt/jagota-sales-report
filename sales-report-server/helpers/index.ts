@@ -39,7 +39,7 @@ const calculateGrowthAndGapPercentages = (
           previousYearMonthlySalesValue
         : undefined;
       const gapRatio = previousYearMonthlyGap
-        ? (sale.gap - previousYearMonthlyGap) / previousYearMonthlyGap
+        ? (sale.gap - previousYearMonthlyGap) / Math.abs(previousYearMonthlyGap)
         : undefined;
       return {
         ...sale,
