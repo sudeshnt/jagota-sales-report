@@ -70,7 +70,6 @@ export const useSalesTable = () => {
 
           return (
             <Tooltip
-              className="cursor-pointer"
               title={
                 <>
                   <Typography color="inherit">Dist.</Typography>
@@ -83,7 +82,7 @@ export const useSalesTable = () => {
                     </li>
                     <li>
                       <Typography variant="body2" color="inherit">
-                        Sales Team: ฿{" "}
+                        Staff Cost: ฿{" "}
                         {row.distribution.salesTeam.toLocaleString()}
                       </Typography>
                     </li>
@@ -95,7 +94,7 @@ export const useSalesTable = () => {
                     </li>
                     <li>
                       <Typography variant="body2" color="inherit">
-                        Other Expenses: ฿{" "}
+                        Financial Cost: ฿{" "}
                         {row.distribution.otherExpenses.toLocaleString()}
                       </Typography>
                     </li>
@@ -103,7 +102,9 @@ export const useSalesTable = () => {
                 </>
               }
             >
-              <span>฿ {row.costOfSales.toLocaleString()}</span>
+              <span className="cursor-pointer">
+                ฿ {row.costOfSales.toLocaleString()}
+              </span>
             </Tooltip>
           );
         },
