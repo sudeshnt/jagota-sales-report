@@ -11,7 +11,6 @@ export type SaleDocument = {
   budget: number;
   achievedValue: number;
   costOfSales: number;
-  gap: number;
   distribution: {
     marketing: number;
     salesTeam: number;
@@ -21,6 +20,7 @@ export type SaleDocument = {
 } & Document;
 
 export type TransformedSaleDocument = SaleDocument & {
+  gap: number;
   profit: number;
   margin: number;
   achievedBudget: number;

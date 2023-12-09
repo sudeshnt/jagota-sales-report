@@ -14,7 +14,6 @@ const SaleSchema = new Schema<SaleDocument>({
   budget: Number,
   achievedValue: Number,
   costOfSales: Number,
-  gap: Number,
   distribution: distributionSchema,
 });
 
