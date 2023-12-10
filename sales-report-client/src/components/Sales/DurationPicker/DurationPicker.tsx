@@ -25,6 +25,7 @@ export const DurationPicker = () => {
 
   useEffect(() => {
     if (!isLoading) fetchSalesData(fromYear, toYear);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fromYear, toYear]);
 
   return (

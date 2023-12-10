@@ -20,7 +20,6 @@ export const fetchSales = async (
     const transformedSales = transformSales(sales);
     return res.status(200).json(transformedSales);
   } catch (err) {
-    console.log(err);
     res.sendStatus(400);
   }
 };

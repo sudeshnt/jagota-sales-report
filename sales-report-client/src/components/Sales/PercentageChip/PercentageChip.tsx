@@ -35,7 +35,7 @@ export const PercentageChip = (props: PercentageChipProps) => {
       return isReversed ? "success" : "error";
     }
     return "info";
-  }, [value, signed, isReversed]);
+  }, [value, variant, scaled, signed, isReversed]);
 
   const label = useMemo(() => {
     if (!signed || value <= 0) return `${value}%`;
