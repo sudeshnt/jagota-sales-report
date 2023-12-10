@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0",
     "title": "Jagota Sales Report Api",
-    "description": "Get api to filter sales data for a range of years",
+    "description": "Api to filter sales data for a range of years",
     "contact": {
       "name": "Sudesh Nimesha",
       "email": "sudeshnt93@gmail.com"
@@ -27,9 +27,18 @@
               "type": "object",
               "properties": {
                 "filter": {
-                  "fromYear": {
-                    "type": "number"
-                  }
+                  "type": "object",
+                  "properties": {
+                    "fromYear": {
+                      "type": "number",
+                      "default": 2021
+                    },
+                    "toYear": {
+                      "type": "number",
+                      "default": 2022
+                    }
+                  },
+                  "required": ["fromYear", "toYear"]
                 }
               }
             }
