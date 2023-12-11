@@ -124,7 +124,7 @@ Make sure you have node installed in order to run this application locally.
 - upgrade npm to the latest version
 
 ```sh
-npm install npm@latest -g
+npm i npm@latest -g
 ```
 
 ### Installation
@@ -135,10 +135,10 @@ npm install npm@latest -g
 git clone https://github.com/sudeshnt/jagota-sales-report.git
 ```
 
-2. Install node modules inside both projects using the following command
+2. Install node modules inside both sub projects using the following command
 
 ```sh
-npm install
+npm i
 ```
 
 3. Inside both `client` and `server`, you can run following command to start dev server:
