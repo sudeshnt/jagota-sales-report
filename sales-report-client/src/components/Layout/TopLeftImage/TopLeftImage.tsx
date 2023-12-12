@@ -7,8 +7,9 @@ export default function TopLeftImg() {
         src="/images/top-left-img.png"
         alt="left-top-image"
         width={600}
-        height={600}
+        height={590}
         priority
+        style={{ width: "auto", height: "auto" }}
       />
     </div>
   );

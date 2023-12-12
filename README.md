@@ -147,10 +147,12 @@ npm i
 npm run dev
 ```
 
+    Client app will be running on port 3000 & Server will be running on port 8080
+
 4. Run the app in the development mode.
 
 Open [http://localhost:3000](http://localhost:3000) to view the frontend app in your browser.
-It'll connect to the local NodeJS server running in the background.
+It'll connect to the local NodeJS server running in the background on [http://localhost:3000](http://localhost:3000).
 
 5. Launch the test runner in the interactive watch mode.
 
