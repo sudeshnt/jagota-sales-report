@@ -1,67 +1,75 @@
 import {
-  SaleDocument,
-  TransformedSaleDocument,
-  TransformedSaleDocumentResponse,
-} from "../types";
-import { toPercentage } from "../utils";
+  type SaleDocument,
+  type TransformedSale,
+  type TransformedSaleDocumentResponse
+} from '../types'
+import { toPercentage } from '../utils'
 
-const transformSale = (sale: SaleDocument) => {
-  const gap = sale.budget - sale.achievedValue;
-  const profit = sale.achievedValue - sale.costOfSales;
-  const achievedBudget = toPercentage(sale.achievedValue / sale.budget);
-  const margin = toPercentage(profit / sale.achievedValue);
+const transformSale = (sale: SaleDocument): TransformedSale => {
+  const saleObject = sale.toObject()
+  const gap = saleObject.budget - saleObject.achievedValue
+  const profit = saleObject.achievedValue - saleObject.costOfSales
+  const achievedBudget = toPercentage(
+    saleObject.achievedValue / saleObject.budget
+  )
+  const margin = toPercentage(profit / saleObject.achievedValue)
 
   return {
-    ...sale.toObject(),
+    ...saleObject,
     gap,
-    achievedBudget,
     profit,
-    margin,
-  } as TransformedSaleDocument;
-};
+    achievedBudget,
+    margin
+  }
+}
 
 const calculateGrowthAndGapPercentages = (
   salesData: TransformedSaleDocumentResponse
-) => {
+): TransformedSaleDocumentResponse => {
   const salesDataWithGrowthAndGapPercentages: TransformedSaleDocumentResponse =
-    {};
+    {}
   Object.entries(salesData).forEach(([year, sales]) => {
-    const previousYearSales = salesData[Number(year) - 1];
+    const previousYearSales = salesData[Number(year) - 1]
     salesDataWithGrowthAndGapPercentages[year] = sales.map((sale) => {
       const previousYearsMonthlySales = previousYearSales?.find(
         (prevSale) => prevSale.month === sale.month
-      );
+      )
       const {
         achievedValue: previousYearMonthlySalesValue,
-        gap: previousYearMonthlyGap,
-      } = previousYearsMonthlySales ?? {};
-      const growthRatio = previousYearMonthlySalesValue
-        ? (sale.achievedValue - previousYearMonthlySalesValue) /
-          previousYearMonthlySalesValue
-        : undefined;
-      const gapRatio = previousYearMonthlyGap
-        ? (sale.gap - previousYearMonthlyGap) / Math.abs(previousYearMonthlyGap)
-        : undefined;
+        gap: previousYearMonthlyGap
+      } = previousYearsMonthlySales ?? {}
+      const growthRatio =
+        previousYearMonthlySalesValue != null
+          ? (sale.achievedValue - previousYearMonthlySalesValue) /
+            previousYearMonthlySalesValue
+          : undefined
+      const gapRatio =
+        previousYearMonthlyGap != null
+          ? (sale.gap - previousYearMonthlyGap) /
+            Math.abs(previousYearMonthlyGap)
+          : undefined
       return {
         ...sale,
         growthPercentage: toPercentage(growthRatio),
-        gapPercentage: toPercentage(gapRatio),
-      } as TransformedSaleDocument;
-    });
-  });
+        gapPercentage: toPercentage(gapRatio)
+      }
+    })
+  })
 
-  return salesDataWithGrowthAndGapPercentages;
-};
+  return salesDataWithGrowthAndGapPercentages
+}
 
 export const transformSales = (sales: SaleDocument[] = []) => {
-  const transformedSales = sales.map(transformSale).reduce((acc, sale) => {
-    const year = sale.year;
-    if (!acc[year]) {
-      acc[year] = [];
+  const transformedSales = sales
+    .map(transformSale)
+    .reduce<TransformedSaleDocumentResponse>((acc, sale) => {
+    const year = sale.year
+    if (acc[year] == null) {
+      acc[year] = []
     }
-    acc[year].push(sale);
-    return acc;
-  }, {} as TransformedSaleDocumentResponse);
+    acc[year].push(sale)
+    return acc
+  }, {})
 
-  return calculateGrowthAndGapPercentages(transformedSales);
-};
+  return calculateGrowthAndGapPercentages(transformedSales)
+}

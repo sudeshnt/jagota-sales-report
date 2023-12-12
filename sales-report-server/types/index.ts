@@ -1,34 +1,36 @@
-import { Document } from "mongoose";
+import { type Document, type Types } from 'mongoose'
 
-export type SalesFilter = {
-  fromYear: number;
-  toYear: number;
-};
+export interface SalesFilter {
+  fromYear: number
+  toYear: number
+}
 
-export type SaleDocument = {
-  year: number;
-  month: string;
-  budget: number;
-  achievedValue: number;
-  costOfSales: number;
+export interface Sale {
+  year: number
+  month: string
+  budget: number
+  achievedValue: number
+  costOfSales: number
   distribution: {
-    marketing: number;
-    salesTeam: number;
-    operations: number;
-    otherExpenses: number;
-  };
-} & Document;
+    marketing: number
+    salesTeam: number
+    operations: number
+    otherExpenses: number
+  }
+}
 
-export type TransformedSaleDocument = SaleDocument & {
-  gap: number;
-  profit: number;
-  margin: number;
-  achievedBudget: number;
-  growthPercentage?: number;
-  gapPercentage?: number;
-};
+export type TransformedSale = Sale & {
+  gap: number
+  profit: number
+  achievedBudget?: number
+  margin?: number
+  growthPercentage?: number
+  gapPercentage?: number
+}
 
-export type TransformedSaleDocumentResponse = Record<
-  string,
-  TransformedSaleDocument[]
->;
+export type SaleDocument = Document<unknown, unknown, Sale> &
+Sale & {
+  _id: Types.ObjectId
+}
+
+export type TransformedSaleDocumentResponse = Record<string, TransformedSale[]>

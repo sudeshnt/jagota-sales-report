@@ -1,8 +1,9 @@
-name: Run unit tests
+name: Test server app
 
 on:
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
 
 jobs:
   build:
@@ -13,12 +14,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-
       - uses: pnpm/action-setup@v2
         with:
           version: 8
           run_install: false
 
-      - run: cd sales-report-client
-      - run: pnpm i
-      - run: pnpm test
+      - run: cd sales-report-server && pnpm i
+      - run: cd sales-report-server && pnpm test
