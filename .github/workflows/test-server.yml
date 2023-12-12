@@ -1,8 +1,9 @@
-name: Run unit tests
+name: Test server app
 
 on:
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
 
 jobs:
   build:
@@ -18,5 +19,5 @@ jobs:
           version: 8
           run_install: false
 
-      - run: cd sales-report-client && pnpm i
-      - run: cd sales-report-client && pnpm test
+      - run: cd sales-report-server && pnpm i
+      - run: cd sales-report-server && pnpm test

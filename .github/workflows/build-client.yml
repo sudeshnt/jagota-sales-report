@@ -1,8 +1,9 @@
-name: Build app
+name: Build client app
 
 on:
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
 
 jobs:
   build:
