@@ -20,4 +20,4 @@ jobs:
 
       - run: cd sales-report-client
       - run: pnpm i
-      - run: pnpm test
+      - run: pnpm test --prefix sales-report-client

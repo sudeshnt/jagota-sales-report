@@ -19,7 +19,6 @@ jobs:
           version: 8
           run_install: false
 
-      - run: cd sales-report-client
       - run: pnpm i
       - name: Build Next.js app
-        run: pnpm run build
+        run: pnpm run build --prefix sales-report-client
