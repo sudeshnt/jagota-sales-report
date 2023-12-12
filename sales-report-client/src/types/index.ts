@@ -16,7 +16,6 @@ export type Sale = {
   growthPercentage: number | null;
   gapPercentage: number | null;
   distribution: {
-    _id: string;
     marketing: number;
     salesTeam: number;
     operations: number;

@@ -2,14 +2,12 @@
 
 import { SalesDataResponse } from "@/types";
 
-const HOST = "https://jagota-sales-report-server.vercel.app";
-
 export async function fetchSalesData(
   fromYear: number,
   toYear: number
 ): Promise<SalesDataResponse> {
   try {
-    const res = await fetch(`${HOST}/sales`, {
+    const res = await fetch(`${process.env.HOST}/sales`, {
       method: "POST",
       cache: "no-store",
       headers: {
