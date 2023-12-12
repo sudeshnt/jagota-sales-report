@@ -21,4 +21,4 @@ jobs:
 
       - run: cd sales-report-client && pnpm i
       - name: Build Next.js app
-        run: pnpm run build --prefix sales-report-client
+        run: pnpm build --prefix sales-report-client
