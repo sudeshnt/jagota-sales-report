@@ -6,19 +6,19 @@ describe("toPercentage", () => {
     expect(result).toEqual(45.6);
   });
 
-  it("returns null for undefined input", () => {
+  it("returns undefined for undefined input", () => {
     const result = toPercentage(undefined);
-    expect(result).toBeNull();
+    expect(result).toBeUndefined();
   });
 
-  it("returns null for null input", () => {
+  it("returns undefined for null input", () => {
     const result = toPercentage();
-    expect(result).toBeNull();
+    expect(result).toBeUndefined();
   });
 
-  it("returns null for NaN input", () => {
+  it("returns undefined for NaN input", () => {
     const result = toPercentage(NaN);
-    expect(result).toBeNull();
+    expect(result).toBeUndefined();
   });
 
   it("handles negative numbers correctly", () => {
